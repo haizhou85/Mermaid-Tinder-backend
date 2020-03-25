@@ -1,0 +1,2 @@
+class Mermaid < ApplicationRecord
+end
