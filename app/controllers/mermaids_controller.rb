@@ -4,6 +4,10 @@ class MermaidsController < ApplicationController
     mermaids = Mermaid.all
     render json: mermaids
   end
+  def show
+    mermaid = Mermaid.find(params[:id])
+    render json: mermaid
+  end
 
   def create
     mermaid = Mermaid.create(mermaid_params)
