@@ -1,12 +1,20 @@
 class MermaidsController < ApplicationController
 
+
+
   def index
     mermaids = Mermaid.all
     render json: mermaids
   end
-  def show
+
+  def update
     mermaid = Mermaid.find(params[:id])
+    mermaid.update_attributes(mermaid_params)
     render json: mermaid
+  end
+
+  def destroy
+      Mermaid.destroy(params[:id])
   end
 
   def create
@@ -16,10 +24,13 @@ class MermaidsController < ApplicationController
     else
       render json: mermaid.errors, status: :unprocessable_entity
    end
+
   end
 
-
-
+  def show
+    mermaid = Mermaid.find(params[:id])
+    render json: mermaid
+  end
 
 private
   def mermaid_params
